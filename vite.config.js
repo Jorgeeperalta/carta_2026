@@ -7,9 +7,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost',
+        target: 'http://localhost:81',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '/qr_carta/api')
+        rewrite: (path) => path.replace(/^\/api/, '/api')
       }
     }
   }
