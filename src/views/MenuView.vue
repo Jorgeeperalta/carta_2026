@@ -25,7 +25,7 @@
 
         <v-spacer />
 
-        <v-btn icon variant="text" to="/admin/negocio">
+        <v-btn icon variant="text" to="/admin/negocios">
           <v-icon>mdi-cog-outline</v-icon>
         </v-btn>
       </v-container>
@@ -89,8 +89,8 @@
                   <v-spacer />
                   <div class="text-subtitle-1 font-weight-black text-primary">${{ item.precio }}</div>
                 </div>
-                <v-avatar class="ma-2 rounded-lg" :size="$vuetify.display.smAndDown ? 70 : 90">
-                  <v-img :src="item.imagen_url" cover />
+                <v-avatar class="ma-2 rounded-lg bg-grey-lighten-3" :size="$vuetify.display.smAndDown ? 80 : 100">
+                  <v-img :src="item.imagen_url" contain />
                 </v-avatar>
               </div>
             </v-card>

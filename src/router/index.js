@@ -22,6 +22,12 @@ const routes = [
         name: 'CreateBusiness',
         component: () => import('../views/BusinessSettings.vue'),
         props: { id: 'nuevo' }
+      },
+      {
+        path: 'negocio/:id/productos',
+        name: 'ProductManagement',
+        component: () => import('../views/ProductManagement.vue'),
+        props: true
       }
     ]
   },

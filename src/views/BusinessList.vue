@@ -46,6 +46,12 @@
                 @click="confirmDelete(n)"
               ></v-btn>
               <v-btn
+                icon="mdi-silverware-fork-knife"
+                variant="text"
+                color="orange-darken-2"
+                :to="'/admin/negocio/' + n.id + '/productos'"
+              ></v-btn>
+              <v-btn
                 icon="mdi-eye"
                 variant="text"
                 color="info"
