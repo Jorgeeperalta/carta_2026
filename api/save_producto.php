@@ -8,9 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
+require_once 'db.php';
+
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=qr_carta", "root", "root");
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $data = json_decode(file_get_contents("php://input"), true);
 

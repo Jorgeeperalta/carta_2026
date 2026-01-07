@@ -2,9 +2,9 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
-$pdo = new PDO("mysql:host=localhost;dbname=qr_carta", "root", "root");
+require_once 'db.php';
 
-$negocio_id = $_GET['negocio_id'];
+$negocio_id = $_GET['negocio_id'] ?? null;
 
 if (!$negocio_id) {
     echo json_encode([]);
@@ -13,6 +13,6 @@ if (!$negocio_id) {
 
 $stmt = $pdo->prepare("SELECT * FROM categorias WHERE negocio_id = ?");
 $stmt->execute([$negocio_id]);
-$categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$categorias = $stmt->fetchAll();
 
 echo json_encode($categorias);

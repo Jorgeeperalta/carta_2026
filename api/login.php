@@ -8,10 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-try {
-    $pdo = new PDO("mysql:host=localhost;dbname=qr_carta", "root", "root");
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require_once 'db.php';
 
+try {
     $data = json_decode(file_get_contents("php://input"), true);
 
     if (!$data || !isset($data['usuario']) || !isset($data['password'])) {
@@ -20,7 +19,7 @@ try {
 
     $stmt = $pdo->prepare("SELECT id, usuario FROM usuarios WHERE usuario = ? AND password = ?");
     $stmt->execute([$data['usuario'], $data['password']]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $user = $stmt->fetch();
 
     if ($user) {
         // En un sistema real usaríamos JWT o Sessions seguras. 
