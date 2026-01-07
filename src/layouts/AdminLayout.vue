@@ -30,7 +30,7 @@
 
       <template v-slot:append>
         <div class="pa-2">
-          <v-btn block color="error" variant="tonal" prepend-icon="mdi-logout">
+          <v-btn block color="error" variant="tonal" prepend-icon="mdi-logout" @click="logout">
             Salir
           </v-btn>
         </div>
@@ -50,6 +50,13 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const drawer = ref(true)
+
+const logout = () => {
+  localStorage.removeItem('admin_token')
+  router.push('/')
+}
 </script>

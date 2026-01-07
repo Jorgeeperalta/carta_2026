@@ -1,7 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MenuView from '../views/MenuView.vue'
+import LoginView from '../views/LoginView.vue'
 
 const routes = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginView
+  },
   {
     path: '/admin',
     component: () => import('../layouts/AdminLayout.vue'),
@@ -46,6 +52,19 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes
+})
+
+// Guard de navegación
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = !!localStorage.getItem('admin_token')
+  
+  if (to.path.startsWith('/admin') && !isAuthenticated) {
+    next({ name: 'Login' })
+  } else if (to.name === 'Login' && isAuthenticated) {
+    next({ name: 'BusinessList' })
+  } else {
+    next()
+  }
 })
 
 export default router

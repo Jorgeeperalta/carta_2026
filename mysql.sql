@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 05-01-2026 a las 16:34:59
+-- Tiempo de generación: 07-01-2026 a las 13:24:02
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 8.3.1
 
@@ -43,7 +43,10 @@ INSERT INTO `categorias` (`id`, `negocio_id`, `nombre`) VALUES
 (3, 1, 'Bebidas'),
 (4, 2, 'Cucuruchos'),
 (5, 2, 'Postres'),
-(6, 2, 'Bebidas Frías');
+(6, 2, 'Bebidas Frías'),
+(7, 1, 'BEBIDAS ALCOHOLICAS'),
+(8, 4, 'Parrilla '),
+(9, 4, 'BEBIDAS');
 
 -- --------------------------------------------------------
 
@@ -92,7 +95,29 @@ INSERT INTO `productos` (`id`, `categoria_id`, `nombre`, `descripcion`, `precio`
 (3, 2, 'Papas Cheddar', 'Papas grandes con lluvia de bacon y cheddar.', '450.00', 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=500'),
 (4, 3, 'Gaseosa 500ml', 'Línea Coca-Cola bien fría.', '300.00', 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=500'),
 (5, 4, 'Cucurucho 2 Gustos', 'Elegí tus sabores favoritos.', '600.00', 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=500'),
-(6, 5, 'Banana Split', 'Helado, banana, dulce de leche y crema.', '1200.00', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=500');
+(6, 5, 'Banana Split', 'Helado, banana, dulce de leche y crema.', '1200.00', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=500'),
+(7, 7, 'CERVEZA QUILMES 1L', 'PROMO 21', '6100.00', 'https://www.casa-segal.com/wp-content/uploads/2020/08/quilmes-1-litro-retornable-bebidas-cervezas-casa-segal-mendoza.jpg'),
+(8, 8, 'PARRILLA P/4 PERSONAS', 'ASADO, CHORI, MORCI, RIÑON, CHINCHU', '4000.00', 'https://elporteno.es/wp-content/uploads/2018/03/WEB-PARRILLADA-OK-EL-PORTENO-2023-1080x675.jpg'),
+(9, 9, 'CERVEZA QUILMES 1L', 'PROMO', '6000.00', 'https://www.casa-segal.com/wp-content/uploads/2020/08/quilmes-1-litro-retornable-bebidas-cervezas-casa-segal-mendoza.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(10) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `usuario`, `password`) VALUES
+(1, 'ale321', 'afm321++');
 
 --
 -- Índices para tablas volcadas
@@ -120,6 +145,12 @@ ALTER TABLE `productos`
   ADD KEY `categoria_id` (`categoria_id`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -127,7 +158,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `negocios`
@@ -139,7 +170,13 @@ ALTER TABLE `negocios`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
